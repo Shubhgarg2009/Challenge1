@@ -28,7 +28,7 @@ var wallsGroup, coinIMG;
 
 function preload(){
     option11IMG=loadImage("level1IMG/1level1.png");
-    option21IMG=loadImage("level1IMG/2level1.png");
+    option21IMG=loadImage("level2IMG/2level1.png");
     option12IMG=loadImage("level2IMG/2level1.png");
     option22IMG=loadImage("level2IMG/2level2.png");
     option13IMG=loadImage("level3IMG/3level1.png");
@@ -101,7 +101,11 @@ heart2.scale=0.2;
 heart3=createSprite(windowWidth/2+50,windowHeight/2-30,20,20)
 heart3.addImage(heart)
 heart3.scale=0.2;
-
+   
+trophy=createSprite(windowWidth/2,windowHeight/2+150,20,20)
+trophy.addImage(trophyIMG)
+trophy.scale=1.3;
+trophy.visible=false;
 
    box=createSprite(720,450,20,20)
    box.addImage(boxIMG)
@@ -128,7 +132,7 @@ heart3.scale=0.2;
       ghost2.velocityX=4;
       ghost1.velocityX=4;
 
-      pacman=createSprite(windowWidth/2,windowHeight/2+100,20,20)
+      pacman=createSprite(windowWidth/2-500,windowHeight/2+100,20,20)
       pacman.addImage(pacmanIMG)
       pacman.scale=0.5;
       //pacman.visible=false;
@@ -136,10 +140,39 @@ heart3.scale=0.2;
         ghostGroup.add(ghost2)
         ghostGroup.add(ghost3)
         ghostGroup.add(ghost1)
+question2=createSprite(windowWidth/2,windowHeight/2-100,40,40)
+question2.addImage(question2IMG)
 
+option21=createSprite(windowWidth/2-100,windowHeight/2+100,20,20)
+option21.addImage(option21IMG)
+option22=createSprite(windowWidth/2+100,windowHeight/2+100,20,20)
+option22.addImage(option22IMG)
+option21.scale=0.4;
+option22.scale=0.4;
+option22.visible=false;
+option21.visible=false;
+question2.visible=false;
 
      coin1=createSprite(windowWidth/2-500,windowHeight/2,20,20)
-
+     coin1.addImage(coinIMG)
+     coin1.scale=0.3;
+     coin2=createSprite(windowWidth-200,windowHeight/2,20,20)
+     coin2.addImage(coinIMG)
+     coin2.scale=0.3;
+     coin3=createSprite(windowWidth/2,windowHeight/2+250,20,20)
+     coin3.addImage(coinIMG)
+     coin3.scale=0.3;
+     coin4=createSprite(windowWidth/2,windowHeight/2-250,20,20)
+     coin4.addImage(coinIMG)
+     coin4.scale=0.3;
+     coin5=createSprite(windowWidth/2,windowHeight/2+100,20,20)
+     coin5.addImage(coinIMG)
+     coin5.scale=0.3;
+     coin6=createSprite(windowWidth/2,windowHeight/2-150,20,20)
+     coin6.addImage(coinIMG)
+     coin6.scale=0.3;
+     
+     trophy.visible=false;
    question1=createSprite(windowWidth-200,100,10,10)
    question1.addImage(question1IMG)
    question1.scale=0.5;
@@ -293,7 +326,7 @@ ghost4.bounceOff(edges);
 ghost2.bounceOff(edges);
 ghost3.bounceOff(edges);
 ghost1.bounceOff(edges);
-ghost4.bounceOff(ghost2) 
+/*ghost4.bounceOff(ghost2) 
 ghost3.bounceOff(ghost2) 
 ghost1.bounceOff(ghost2)                         
 ghost4.bounceOff(ghost1)   
@@ -304,9 +337,9 @@ ghost2.bounceOff(ghost3)
 ghost1.bounceOff(ghost3)                                      
 ghost1.bounceOff(ghost4) 
 ghost3.bounceOff(ghost4) 
-ghost2.bounceOff(ghost4) 
+ghost2.bounceOff(ghost4)*\ 
     
-    if(pacman.isTouching(ghostGroup)){
+   /* if(pacman.isTouching(ghostGroup)){
       heart1.visible=false;
     }
     if(pacman.isTouching(ghostGroup)){
@@ -317,7 +350,7 @@ ghost2.bounceOff(ghost4)
     }
     if(heart3.visible=false){
       bgIMG=bgreset
-    }
+    }*/
     if(pacman.isTouching(w1)){
     pacman.x=windowWidth-240;
     pacman.y=windowHeight/2;
@@ -328,6 +361,56 @@ ghost2.bounceOff(ghost4)
       pacman.y=windowHeight/2;
       pacman.velocityX=4;
       }
+
+      if(pacman.isTouching(coin1)){
+        coin1.visible=false;
+      }
+      if(pacman.isTouching(coin2)){
+        coin2.visible=false;
+      }
+      if(pacman.isTouching(coin3)){
+        coin3.visible=false;
+      }
+      if(pacman.isTouching(coin4)){
+        coin4.visible=false;
+      }
+      if(pacman.isTouching(coin5)){
+        coin5.visible=false;
+      }
+      if(pacman.isTouching(coin6)){
+        coin6.visible=false;
+      }
+      if(coin1 || coin2 ||coin3||coin4||coin5||coin6.visible=== false){
+        wallsGroup.setVisibleEach=false;
+        ghost4.visible=false;
+        ghost3.visible=false;
+        ghost2.visible=false;
+        ghost1.visible=false;
+        pacman.vsible=false;
+        heart1.visible=false;
+        heart2.visible=false;
+        heart3.visible=false;
+        option22.visible=false;
+        option22.visible=true;
+  option21.visible=true;
+  question2.visible=true;
+      }
+   /* if(trophy.isTouching(pacman)){
+      trophy.visible=false;
+      wallsGroup.setVisibleEach=false;
+      ghost4.visible=false;
+      ghost3.visible=false;
+      ghost2.visible=false;
+      ghost1.visible=false;
+      pacman.vsible=false;
+      heart1.visible=false;
+      heart2.visible=false;
+      heart3.visible=false;
+      option22.visible=false;
+      option22.visible=true;
+option21.visible=true;
+question2.visible=true;*/
+    
 
    if(keyDown(UP_ARROW)) {
     player1.velocityX = 0;
